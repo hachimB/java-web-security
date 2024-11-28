@@ -1,0 +1,9 @@
+CREATE DATABASE IF NOT EXISTS web_security;
+USE web_security;
+CREATE TABLE IF NOT EXISTS user (
+    userId INT AUTO_INCREMENT PRIMARY KEY,
+    userName VARCHAR(100) NOT NULL,
+    userSurname VARCHAR(100) NOT NULL,
+    userPassword VARCHAR(255) NOT NULL,
+    userEmail VARCHAR(100) NOT NULL
+);
