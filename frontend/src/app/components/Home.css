@@ -1,0 +1,23 @@
+
+.button-class {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    height: 70vh; /* Full viewport height */
+}
+
+.btn1 {
+    margin-right: 1rem;
+}
+
+.Text-div {
+    display: flex;
+    margin-top: 3rem;
+    justify-content: center;
+}
+
+h1 {
+    font-size: 3rem;
+    font-weight: bold;
+    font-family: serif;
+}
