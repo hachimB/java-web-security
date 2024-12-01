@@ -84,10 +84,10 @@ public class UserController {
 
     @PostMapping("/insecure-signup")
 
-    public String insecureSignup(@RequestParam String userEmail, 
-                             @RequestParam String userName, 
+    public String insecureSignup(@RequestParam String userEmail,
+                             @RequestParam String userName,
                              @RequestParam String userPassword,
-                             @RequestParam String userSurname, 
+                             @RequestParam String userSurname,
                              @RequestParam String role) {
     try (Connection conn = dataSource.getConnection()) {
         // Insecure: User inputs are directly concatenated into the SQL query
