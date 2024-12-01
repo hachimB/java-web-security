@@ -10,6 +10,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.web.bind.annotation.*;
 
+import javax.sql.DataSource; 
+import java.sql.Connection;  
+import java.sql.Statement;
+
 @RestController
 @RequestMapping("/api/users")
 @CrossOrigin(origins = "http://localhost:3000")
@@ -73,4 +77,31 @@ public class UserController {
         User newUser = userService.registerUser(registrationRequest);
         return ResponseEntity.ok(newUser);
     }
+
+
+    @Autowired
+    private DataSource dataSource;
+
+    @PostMapping("/insecure-signup")
+
+    public String insecureSignup(@RequestParam String userEmail, 
+                             @RequestParam String userName, 
+                             @RequestParam String userPassword,
+                             @RequestParam String userSurname, 
+                             @RequestParam String role) {
+    try (Connection conn = dataSource.getConnection()) {
+        // Insecure: User inputs are directly concatenated into the SQL query
+        String sql = "INSERT INTO users (user_email, user_name, user_password, user_surname, role) " +
+                     "VALUES ('" + userEmail + "', '" + userName + "', '" + userPassword + "', '" + userSurname + "', '" + role + "')";
+        
+        Statement stmt = conn.createStatement();
+        stmt.executeUpdate(sql);
+        return "Insecure Signup Successful!";
+    } catch (Exception e) {
+        e.printStackTrace();
+        return "Error occurred: " + e.getMessage();
+    }
+}
+
+
 }

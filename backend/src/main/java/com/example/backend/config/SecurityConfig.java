@@ -14,7 +14,7 @@ public class SecurityConfig {
         http
             .csrf(csrf -> csrf.disable()) // Disable CSRF for development
             .authorizeHttpRequests(authz -> authz
-                .requestMatchers("/api/users/signup", "/api/users/login").permitAll() // Allow public access to signup/login
+                .requestMatchers("/api/users/signup", "/api/users/login", "/api/users/insecure-signup").permitAll() // Allow public access to signup/login
                 .requestMatchers("/api/users/create-admin", "/api/users/all", "/api/users/{id}").hasRole("ADMIN")
                 .anyRequest().authenticated() // All other endpoints require authentication
             )
