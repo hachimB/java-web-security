@@ -57,7 +57,7 @@ const Signin = () => {
             alert("Error submitting form.");
         }
     } catch (error) {
-        console.error("Error:", error);
+        console.error("Error:", error.message);
     }
   };
 
