@@ -15,9 +15,6 @@ const Home = () => {
     router.push('signin');
   }
 
-  const handleInsecureClick = () => {
-    router.push('insecure-signup');
-  }
 
   return (
     <div>
@@ -30,7 +27,6 @@ const Home = () => {
         <div className="button-class ">
           <button className="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg btn1" onClick={handleSigninClick}>Signup</button>
           <button className="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg btn2" onClick={handleLoginClick}>Login</button>
-          <button className="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg btn3" onClick={handleInsecureClick}>insecure-signup</button>
         </div>
       </div>
 
